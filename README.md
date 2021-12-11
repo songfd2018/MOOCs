@@ -1,6 +1,6 @@
 # Validity check for peer assessment schemes in MOOCs
 
-We offer a linear-time-complexity algorithm to quickly determine the validity of a given peer assessment scheme. Compared with an alternative approach, the speed of BFS-MOOCs accelerates over 1,000 times. At the same time, the disconnected submission communities can be identified by BFS-MOOCs. The instructor can grade a small number of submissions in each disconnected community to turn the shared grading graph into a connected graph. Thus, BFS-MOOCs provides a strategy for the instructor to remedy an invalid observed assessment grid. The following steps will reproduce the results in our manuscript.
+We offer a linear-time-complexity algorithm to quickly determine the validity of a given peer assessment scheme. Compared with an alternative approach, the speed of BFS-MOOCs accelerates over 1,000 times. At the same time, the disconnected submission communities can be identified by BFS-MOOCs. The instructor can grade a small number of submissions in each disconnected community to turn the shared grading graph into a connected graph. Thus, BFS-MOOCs provides a strategy for the instructor to remedy an invalid observed assessment grid. The following steps will reproduce the results in our manuscript.
 
 ## Efficiency in validity check
 
