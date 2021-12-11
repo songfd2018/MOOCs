@@ -6,13 +6,13 @@ We offer a linear-time-complexity algorithm to quickly determine the validity of
 
 We propose an efficient algorithm, BFS-MOOCs, to check the validity of a peer assessment scheme built upon the breadth-first search (BFS) algorithm. The `01Identifiability_Check` folder contains code that generates Fig 4 in the manuscript. To reproduce all the results, please run `Comparision_in_idenfiability_check.R` to:
 
-- conduct the BFS-MOOCS and determined-based algorithm under the circulating designs with four levels of class size N = 1,000, 3,000, 10,000 and 30,000 and five levels of the number of assigned submissions m = 3, 4, 5, 6, 7 for each grader;
+- conduct the BFS-MOOCS and determined-based algorithm under the circulating designs with four levels of class size  `N` = 1,000, 3,000, 10,000 and 30,000 and five levels of the number of assigned submissions `m` = 3, 4, 5, 6, 7 for each grader;
 - store the probability and time consumption under overall designs in `id_check_consumption.RData`
-- draw the line chart of the time consumption versus the class size N under different m.
+- draw the line chart of the time consumption versus the class size `N` under different `m`.
 
 ## Impact of missing grading and sample size calculation
 
-Even if an instructor assigns the class a valid assessment grid W, the resulting assessment grid Y realized by the students can still be invalid because students may not complete their peer assessment tasks. We propose a dynamic programming algorithm to calculate the probability that the resulting observed assessment grid Y is valid given the assigned assessment grid W and grader-specific grading probabilities.
+Even if an instructor assigns the class a valid assessment scheme `W`, the resulting assessment grid `Y` realized by the students can still be invalid because students may not complete their peer assessment tasks. We propose a dynamic programming algorithm to calculate the probability that the resulting observed assessment grid `Y` is valid given the assigned assessment grid `W` and grader-specific grading probabilities.
 
 First, compile the C++ source code in the folder `02Missing_Grading/src` by running
 
@@ -23,7 +23,7 @@ R CMD SHLIB cal_prob.cpp
 
 Second, run `Calculate_connectivity_prob.R` to:
 
-- calculate the probability of realizing a valid Y recursively
+- calculate the probability of realizing a valid `Y` recursively
 
 `Calculate_connectivity_prob.R` requires `Rscript` command to input arguments, for example:
 
@@ -34,18 +34,18 @@ Rscript Calculate_connectivity_prob.R -N 1000 -m 5 -t 0.8
 
 where 
 
-- the argument -N denotes the class size, 
-- the argument -m denotes the number of assigned submissions to each grader, 
-- and the argument -t represents the grading probability. 
+- the argument `-N` denotes the class size, 
+- the argument `-m` denotes the number of assigned submissions to each grader, 
+- and the argument `-t` represents the grading probability. 
 
-The function returns the probability of realizing a valid Y and time consumption. The function also generates an `RData` file to store the probability and time consumption in the `./result` directory.
+The function returns the probability of realizing a valid `Y` and time consumption. The function also generates an `RData` file to store the probability and time consumption in the `./result` directory.
 
-In our manuscript, we vary N among 1,000, 3,000, 10,000, vary m among 3, 4, 5, 6, 7 and vary lambda among 0.6, 0.7, 0.8 and 0.9. 
+In our manuscript, we vary `N` among 1,000, 3,000, 10,000, vary `m` among 3, 4, 5, 6, 7 and vary `lambda` among 0.6, 0.7, 0.8 and 0.9. 
 
-After generating `RData` files under all different settings of (N, m, lambda), run `Plot_probability_trend.R` to:
+After generating `RData` files under all different settings of `(N, m, lambda)`, run `Plot_probability_trend.R` to:
 
 - collect the valid probabilities and time consumptions under overall settings, which is stored in `./result/prob_trend_collection.RData`
-- draw the line chart of the probability of realizing a valid Y versus m under different N and lambda.
+- draw the line chart of the probability of realizing a valid `Y` versus `m` under different `N` and `lambda`.
 
 ## Ordering of students with different attitudes in peer assessment
 
@@ -60,16 +60,16 @@ R CMD SHLIB cal_prob.cpp
 
 Then, run `Arrangement_comparison.R` to:
 
-- generate the grading probabilities vector `prob_N1000_consecl.txt` for each l as the input of probability calculation;
+- generate the grading probabilities vector `prob_N1000_consecl.txt` for each `l` as the input of probability calculation;
 - calculate the connectivity probability by running `Calculate_connectivity_prob.R` as
 
 ```
 Rscript ../02Missing_Grading/Calculate_connectivity_prob.R -N 1000 -m m -n prob_N1000_consecl
 ```
 
-where the argument -n denotes the file name of the grading probability vector of all students. Here, we vary m from 4 to 6 and vary l among {1, 2, 4, 5, 10, 20, 50, 100, 250, 500};
+where the argument `-n` denotes the file name of the grading probability vector of all students. Here, we vary `m` from 4 to 6 and vary `l` among 1, 2, 4, 5, 10, 20, 50, 100, 250 and 500;
 
-- draw the line chart of the probability of realizing a valid Y under different circumstances.
+- draw the line chart of the probability of realizing a valid `Y` under different circumstances.
 
 ## Finding all subgraphs in the observed assessment grid
 
